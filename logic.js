@@ -256,6 +256,7 @@ function Setup(board, rules) {
     this.desert = [];
     this.shuffleResources = function() {
         shuffle(rules.resources);
+        this.desert = [];
         var idx = rules.resources.indexOf('desert');
         while (idx != -1) {
             this.desert.push(idx);
