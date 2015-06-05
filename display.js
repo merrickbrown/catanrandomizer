@@ -95,7 +95,7 @@
         var isSmall = false,
             fcanvas = document.getElementById('foreground'),
             fcontext = fcanvas.getContext('2d');
-        var isHor, board, setup, rolls;
+        var isHor, board, setup, rolls, scale;
 
         function generateRolls() {return setup.generate(function(s, r) {
             return hexFilter(noRedAdjacent, s, r);
@@ -134,23 +134,50 @@
             centerX = (minX + maxX) / 2,
             centerY = (minY + maxY) / 2;
             remap();
+            redraw();
         }
 
         function remap() {
             setup.shuffleResources();
+            redrawResources();
             reroll();
         } 
 
         function reroll() {
             rolls = generateRolls();
-            redraw();
+            redrawRolls();
         }
 
-        function redraw() {
-            fcontext.rect(0, 0, fcanvas.width, fcanvas.height);
-            fcontext.fillStyle = '#66B8E4';
-            fcontext.fill();
-            scale = 0.9 * Math.min(fcanvas.width, fcanvas.height) / Math.max(maxX - minX, maxY - minY);
+        function redrawRolls() {
+            for (var i = 0; i < setup.board.hexes.length; i++) {
+                rollCircle(
+                    scale * (setup.board.hexes[i].center.x - centerX) + (isHor ? fcanvas.height / 2 : fcanvas.width / 2),
+                    scale * (setup.board.hexes[i].center.y - centerY) + (isHor ? fcanvas.width / 2 : fcanvas.height / 2),
+                    scale * .36,
+                    fcontext,
+                    rolls[i],
+                    isHor);
+            }
+        }
+
+        function redrawResources() {
+            for (var i = 0; i < setup.board.hexes.length; i++) {
+                roundedHex(
+                    scale * (setup.board.hexes[i].center.x - centerX) + (isHor ? fcanvas.height / 2 : fcanvas.width / 2),
+                    scale * (setup.board.hexes[i].center.y - centerY) + (isHor ? fcanvas.width / 2 : fcanvas.height / 2),
+                    scale * 0.92,
+                    0.25,
+                    fcontext,
+                    resourceColors[setup.rules.resources[i]],
+                    0.01,
+                    true,
+                    resourceColors[setup.rules.resources[i]],
+                    isHor);
+
+            }
+        }
+
+        function redrawFrame() {
             for (var i = 0; i < setup.board.hexes.length; i++) {
                 roundedHex(
                     scale * (setup.board.hexes[i].center.x - centerX) + (isHor ? fcanvas.height / 2 : fcanvas.width / 2),
@@ -165,26 +192,16 @@
                     isHor
                 );
             }
-            for (var i = 0; i < setup.board.hexes.length; i++) {
-                roundedHex(
-                    scale * (setup.board.hexes[i].center.x - centerX) + (isHor ? fcanvas.height / 2 : fcanvas.width / 2),
-                    scale * (setup.board.hexes[i].center.y - centerY) + (isHor ? fcanvas.width / 2 : fcanvas.height / 2),
-                    scale * 0.92,
-                    0.25,
-                    fcontext,
-                    resourceColors[setup.rules.resources[i]],
-                    0.01,
-                    true,
-                    resourceColors[setup.rules.resources[i]],
-                    isHor);
-                rollCircle(
-                    scale * (setup.board.hexes[i].center.x - centerX) + (isHor ? fcanvas.height / 2 : fcanvas.width / 2),
-                    scale * (setup.board.hexes[i].center.y - centerY) + (isHor ? fcanvas.width / 2 : fcanvas.height / 2),
-                    scale * .36,
-                    fcontext,
-                    rolls[i],
-                    isHor);
-            }
+        }
+
+        function redraw() {
+            fcontext.rect(0, 0, fcanvas.width, fcanvas.height);
+            fcontext.fillStyle = '#66B8E4';
+            fcontext.fill();
+            scale = 0.9 * Math.min(fcanvas.width, fcanvas.height) / Math.max(maxX - minX, maxY - minY);
+            redrawFrame();
+            redrawResources();
+            redrawRolls();
         }
 
         function resizeCanvas() {
