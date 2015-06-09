@@ -4,6 +4,46 @@
 		"selected_items":
 		[
 			[
+				"getElem",
+				"getElementById(${0:id})	Element"
+			],
+			[
+				"getE",
+				"getElementById(${0:id})	Element"
+			],
+			[
+				"fa",
+				"false"
+			],
+			[
+				"f",
+				"float"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"Ma",
+				"Math.PI	Math"
+			],
+			[
+				"textA",
+				"textAlign = 'center'	Style CSS"
+			],
+			[
+				"resi",
+				"resize	Event"
+			],
+			[
+				"res",
+				"resize	.resize()"
+			],
+			[
+				"add",
+				"addEventListener(${0:type}, listener)	EventTarget"
+			],
+			[
 				"ind",
 				"indexOf(${0:searchElement})	Array"
 			],
@@ -64,10 +104,6 @@
 				"attr	.attr() - multiple"
 			],
 			[
-				"add",
-				"addClass	.addClass()"
-			],
-			[
 				"fun",
 				"function"
 			],
@@ -111,15 +147,32 @@
 			"file": "logic.js",
 			"settings":
 			{
-				"buffer_size": 11618,
+				"buffer_size": 11428,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "display.html",
+			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 2229,
+				"buffer_size": 479,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "display.js",
+			"settings":
+			{
+				"buffer_size": 7648,
+				"line_ending": "Unix",
+				"name": "display.js"
+			}
+		},
+		{
+			"file": "display.css",
+			"settings":
+			{
+				"buffer_size": 986,
 				"line_ending": "Unix"
 			}
 		}
@@ -175,13 +228,29 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 352.0,
-		"last_filter": "Package Control: ",
+		"height": 143.0,
+		"last_filter": "",
 		"selected_items":
 		[
 			[
+				"tidy",
+				"Tidy CSS (Highest Compression)"
+			],
+			[
+				"pkg ",
+				"Package Control: Install Package"
+			],
+			[
+				"java",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"html",
+				"HTMLBeautify"
+			],
+			[
 				"Package Control: ",
-				"Package Control: List Packages"
+				"Package Control: Install Package"
 			],
 			[
 				"pkgi",
@@ -292,7 +361,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 467.0
+		"width": 449.0
 	},
 	"console":
 	{
@@ -313,6 +382,9 @@
 	},
 	"file_history":
 	[
+		"/home/merrick/Projects/catanrandomizer/display.html",
+		"/home/merrick/.config/sublime-text-3/Packages/Javascript Beautify/JavascriptBeautify.sublime-settings",
+		"/home/merrick/Projects/catanrandomizer/stuff.css",
 		"/home/merrick/.config/sublime-text-3/Packages/User/Javatar.sublime-settings",
 		"/home/merrick/.config/sublime-text-3/Packages/Javatar/Javatar.sublime-settings",
 		"/home/merrick/.config/sublime-text-3/Packages/Javatar/README.md",
@@ -341,7 +413,7 @@
 	],
 	"find":
 	{
-		"height": 27.0
+		"height": 25.0
 	},
 	"find_in_files":
 	{
@@ -355,6 +427,22 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Board",
+			"var",
+			"board",
+			"button",
+			"absolute",
+			"rndbutt",
+			";\n",
+			" +  Y",
+			" + X",
+			" +  Y",
+			" + Y",
+			" + X",
+			";",
+			"var",
+			"test",
+			"line",
 			"R",
 			"context",
 			"12",
@@ -407,7 +495,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -416,15 +504,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11618,
+						"buffer_size": 11428,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								11489,
-								11489
+								7456,
+								7456
 							]
 						],
 						"settings":
@@ -433,40 +521,101 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 7791.0,
+						"translation.y": 2879.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "display.html",
+					"file": "index.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2229,
+						"buffer_size": 479,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2098,
-								2098
+								479,
+								479
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 747.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "display.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7648,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4555,
+								4555
+							]
+						],
+						"settings":
+						{
+							"auto_name": "display.js",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "display.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 986,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								950,
+								950
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -474,7 +623,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 37.0
+		"height": 25.0
 	},
 	"input":
 	{
@@ -519,7 +668,7 @@
 	"project": "catanrandomizer.sublime-project",
 	"replace":
 	{
-		"height": 50.0
+		"height": 46.0
 	},
 	"save_all_on_build": true,
 	"select_file":

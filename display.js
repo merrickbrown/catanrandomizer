@@ -39,7 +39,7 @@
         if (number != 0) {
             ctx.save();
             if (isHor) {
-                ctx.translate(Y, X);
+                ctx.translate(Y, -X);
             } else {
                 ctx.translate(X, Y);
             }
@@ -67,7 +67,7 @@
         var R = radius * S;
         ctx.save();
         if (isHor) {
-            ctx.translate(Y, X);
+            ctx.translate(Y, -X);
             ctx.rotate(Math.PI / 6);
         } else {
             ctx.translate(X, Y);
@@ -151,7 +151,7 @@
         function redrawRolls() {
             for (var i = 0; i < setup.board.hexes.length; i++) {
                 rollCircle(
-                    scale * (setup.board.hexes[i].center.x - centerX) + (isHor ? fcanvas.height / 2 : fcanvas.width / 2),
+                    scale * (setup.board.hexes[i].center.x - centerX) + (isHor ? -fcanvas.height / 2 : fcanvas.width / 2),
                     scale * (setup.board.hexes[i].center.y - centerY) + (isHor ? fcanvas.width / 2 : fcanvas.height / 2),
                     scale * .36,
                     fcontext,
@@ -163,7 +163,7 @@
         function redrawResources() {
             for (var i = 0; i < setup.board.hexes.length; i++) {
                 roundedHex(
-                    scale * (setup.board.hexes[i].center.x - centerX) + (isHor ? fcanvas.height / 2 : fcanvas.width / 2),
+                    scale * (setup.board.hexes[i].center.x - centerX) + (isHor ? -fcanvas.height / 2 : fcanvas.width / 2),
                     scale * (setup.board.hexes[i].center.y - centerY) + (isHor ? fcanvas.width / 2 : fcanvas.height / 2),
                     scale * 0.92,
                     0.25,
@@ -180,7 +180,7 @@
         function redrawFrame() {
             for (var i = 0; i < setup.board.hexes.length; i++) {
                 roundedHex(
-                    scale * (setup.board.hexes[i].center.x - centerX) + (isHor ? fcanvas.height / 2 : fcanvas.width / 2),
+                    scale * (setup.board.hexes[i].center.x - centerX) + (isHor ? -fcanvas.height / 2 : fcanvas.width / 2),
                     scale * (setup.board.hexes[i].center.y - centerY) + (isHor ? fcanvas.width / 2 : fcanvas.height / 2),
                     scale * 1.08,
                     0.25,
