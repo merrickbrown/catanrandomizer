@@ -11,7 +11,7 @@
         var RT3 = Math.sqrt(3);
         ctx.save();
         if (isHor) {
-            ctx.translate(Y, X);
+            ctx.translate(Y, -X);
             ctx.rotate(Math.PI / 6);
         } else {
             ctx.translate(X, Y);
