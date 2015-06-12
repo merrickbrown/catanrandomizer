@@ -378,6 +378,7 @@ const smallGame = {
         "ore", "ore", "ore"
     ]
 };
+
 const largeGame = {
     rollnumbers: [2, 2,
         3, 3, 3,
@@ -429,5 +430,59 @@ const largeMap = {
         [-RT3 * (2 / 2), (12 / 2)],
         [-RT3 * (1 / 2), (15 / 2)],
         [-RT3 * (0 / 2), (18 / 2)]
+    ]
+};
+
+const altLargeMap = {
+    //inMapQ : function(x,y) {return 0 <= x && x <= 5 && 0 <= y && y <= 6 && -3 <= x - y && x - y <= 2;},
+    vertexrowlengths: [3, 4, 4, 5, 5, 6, 6, 6, 6, 6, 6, 5, 5, 4, 4, 3],
+    vertexrowstarts: [
+        [-RT3 * (0 / 2), (-2 / 2)],
+        [-RT3 * (1 / 2), (-1 / 2)],
+        [-RT3 * (1 / 2), (1 / 2)],
+        [-RT3 * (2 / 2), (2 / 2)],
+        [-RT3 * (2 / 2), (4 / 2)],
+        [-RT3 * (3 / 2), (5 / 2)],
+        [-RT3 * (3 / 2), (7 / 2)],
+        [-RT3 * (2 / 2), (8 / 2)],
+        [-RT3 * (2 / 2), (10 / 2)],
+        [-RT3 * (1 / 2), (11 / 2)],
+        [-RT3 * (1 / 2), (13 / 2)],
+        [-RT3 * (0 / 2), (14 / 2)],
+        [-RT3 * (0 / 2), (16 / 2)],
+        [-RT3 * (-1/ 2), (17 / 2)],
+        [-RT3 * (-1/ 2), (19 / 2)],
+        [-RT3 * (-2/ 2), (20 / 2)]
+    ],
+    hexrowlengths: [3, 4, 5, 5, 5, 4, 3],
+    hexrowstarts: [
+        [-RT3 * (0 / 2), (0 / 2)],
+        [-RT3 * (1 / 2), (3 / 2)],
+        [-RT3 * (2 / 2), (6 / 2)],
+        [-RT3 * (1 / 2), (9 / 2)],
+        [-RT3 * (0 / 2), (12 / 2)],
+        [-RT3 * (-1 / 2), (15 / 2)],
+        [-RT3 * (-2 / 2), (18 / 2)]
+    ]
+};
+
+const altLargeGame = {
+    rollnumbers: [2, 2,
+        3, 3, 3,
+        4, 4, 4,
+        5, 5, 5,
+        6, 6, 6,
+        8, 8, 8,
+        9, 9, 9,
+        10, 10, 10,
+        11, 11, 11,
+        12, 12
+    ],
+    resources: ["desert",
+        "sheep", "sheep", "sheep", "sheep", "sheep", "sheep",
+        "wood", "wood", "wood", "wood", "wood", "wood",
+        "wheat", "wheat", "wheat", "wheat", "wheat", "wheat",
+        "clay", "clay", "clay", "clay", "clay",
+        "ore", "ore", "ore", "ore", "ore"
     ]
 };
