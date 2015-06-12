@@ -6,7 +6,7 @@
         'ore': '#929292',
         'desert': '#f8fec2'
     };
-    
+
     var hexagon = function(X, Y, S, ctx, linecolor, linewidth, fill, fillcolor, isHor) {
         var RT3 = Math.sqrt(3);
         ctx.save();
@@ -35,7 +35,7 @@
         ctx.restore();
     };
 
-    function rollCircle(X, Y, S, ctx, number,isHor) {
+    function rollCircle(X, Y, S, ctx, number, isHor, ghostliness) {
         if (number != 0) {
             ctx.save();
             if (isHor) {
@@ -45,15 +45,15 @@
             }
             ctx.beginPath();
             ctx.arc(0, 0, S, 0, 2 * Math.PI);
-            ctx.fillStyle = '#f8fec2'
+            ctx.fillStyle = '#f8fec2' //rgb(248,254,194)
             ctx.fill();
             // ctx.lineWidth = S*0.25
             // ctx.stroke();
             ctx.font = "bold " + S * 1.3 + "px sans-serif";
             if (number === 6 || number === 8) {
-                ctx.fillStyle = 'red';
+                ctx.fillStyle = 'rgb('+ (255 - Math.round(ghostliness*7)) +','+Math.round( ghostliness*254 ) +',' + Math.round(ghostliness*194) + ')';
             } else {
-                ctx.fillStyle = 'black';
+                ctx.fillStyle = 'rgb('+ Math.round(ghostliness*248) +','+ Math.round( ghostliness*254 ) +','+ Math.round(ghostliness*194) +')';
             }
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
@@ -97,34 +97,36 @@
             fcontext = fcanvas.getContext('2d');
         var isHor, board, setup, rolls, scale;
 
-        function generateRolls() {return setup.generate(function(s, r) {
-            return hexFilter(noRedAdjacent, s, r);
-        });};
+        function generateRolls() {
+            return setup.generate(function(s, r) {
+                return hexFilter(noRedAdjacent, s, r);
+            });
+        };
 
         initialize();
 
         function initialize() {
             window.addEventListener('resize', resizeCanvas, false);
-            document.getElementById('button1').addEventListener('click', reroll, false);
+            document.getElementById('button1').addEventListener('click', fadereroll, false);
             document.getElementById('button1').addEventListener('touchstart',
-                function(event){
+                function(event) {
                     event.preventDefault();
-                    reroll();
-                }, 
+                    fadereroll();
+                },
                 false);
             document.getElementById('button2').addEventListener('click', remap, false);
             document.getElementById('button2').addEventListener('touchstart',
-                function(event){
+                function(event) {
                     event.preventDefault();
                     remap();
-                }, 
+                },
                 false);
             document.getElementById('button3').addEventListener('click', toggleMap, false);
             document.getElementById('button3').addEventListener('touchstart',
-                function(event){
+                function(event) {
                     event.preventDefault();
                     toggleMap();
-                }, 
+                },
                 false);
             toggleMap();
             resizeCanvas();
@@ -159,14 +161,41 @@
             setup.shuffleResources();
             redrawResources();
             reroll();
-        } 
+        }
 
         function reroll() {
             rolls = generateRolls();
-            redrawRolls();
+            redrawRolls(0);
         }
 
-        function redrawRolls() {
+        function fadereroll() {
+            var g = 0;
+            var timer = window.setInterval(function() {
+                redrawRolls(g);
+                g += 1/15;
+                if (g > 1) {
+                    rolls = generateRolls();
+                    window.clearInterval(timer);
+                    fadeRollsIn();
+                }
+            }, 1000 / 60);
+        }
+
+
+        function fadeRollsIn() {
+            var g = 1;
+            var timer = window.setInterval(function() {
+                redrawRolls(g);
+                g -= 1/30;
+                if (g < 0) {
+                    window.clearInterval(timer);
+                }
+            }, 1000 / 60);
+        }
+
+
+
+        function redrawRolls(ghostliness) {
             for (var i = 0; i < setup.board.hexes.length; i++) {
                 rollCircle(
                     scale * (setup.board.hexes[i].center.x - centerX) + (isHor ? -fcanvas.height / 2 : fcanvas.width / 2),
@@ -174,7 +203,8 @@
                     scale * .36,
                     fcontext,
                     rolls[i],
-                    isHor);
+                    isHor,
+                    ghostliness);
             }
         }
 
@@ -219,7 +249,7 @@
             scale = 0.9 * Math.min(fcanvas.width, fcanvas.height) / Math.max(maxX - minX, maxY - minY);
             redrawFrame();
             redrawResources();
-            redrawRolls();
+            redrawRolls(0);
         }
 
         function resizeCanvas() {
