@@ -106,11 +106,26 @@
         function initialize() {
             window.addEventListener('resize', resizeCanvas, false);
             document.getElementById('button1').addEventListener('click', reroll, false);
-            document.getElementById('button1').addEventListener('touchstart', reroll, false);
+            document.getElementById('button1').addEventListener('touchstart',
+                function(event){
+                    event.preventDefault();
+                    reroll();
+                }, 
+                false);
             document.getElementById('button2').addEventListener('click', remap, false);
-            document.getElementById('button2').addEventListener('touchstart', remap, false);
+            document.getElementById('button2').addEventListener('touchstart',
+                function(event){
+                    event.preventDefault();
+                    remap();
+                }, 
+                false);
             document.getElementById('button3').addEventListener('click', toggleMap, false);
-            document.getElementById('button3').addEventListener('touchstart', toggleMap, false);
+            document.getElementById('button3').addEventListener('touchstart',
+                function(event){
+                    event.preventDefault();
+                    toggleMap();
+                }, 
+                false);
             toggleMap();
             resizeCanvas();
         }
