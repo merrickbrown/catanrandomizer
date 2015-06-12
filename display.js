@@ -105,9 +105,9 @@
 
         function initialize() {
             window.addEventListener('resize', resizeCanvas, false);
-            document.getElementById('rndrolls').addEventListener('click', reroll, false);
-            document.getElementById('rndmap').addEventListener('click', remap, false);
-            document.getElementById('maptype').addEventListener('click', toggleMap, false);
+            document.getElementById('button1').addEventListener('click', reroll, false);
+            document.getElementById('button2').addEventListener('click', remap, false);
+            document.getElementById('button3').addEventListener('click', toggleMap, false);
             toggleMap();
             resizeCanvas();
         }

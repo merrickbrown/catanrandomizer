@@ -1,18 +1,47 @@
 <!DOCTYPE HTML>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link rel="stylesheet" type="text/css" href="display.css">
   </head>
   <body>
-     <div>    
-        <canvas id="foreground" style="float:left"></canvas>
-        <div>
-            <button id="rndrolls" class="rnd">randomize rolls</button>
-            <button id="rndmap" class="rnd">randomize map</button>
-            <button id="maptype" class="rnd">map size</button>
-        </div>
-        <script src="logic.js"></script>
-        <script src="display.js"></script>
+    <canvas id="foreground">A randomized catan map</canvas>
+<div class="hex-container" id="button1">
+  <div class="outer-container">
+    <div class="hex side1"></div>
+    <div class="hex side2"></div>
+    <div class="hex side3"></div>
+  </div>
+  <div class="inner-container">
+    <div class="side2 hex inner"></div>
+    <div class="side3 hex inner"></div>
+    <div class="side1 hex inner"> 
+  <span>Rolls</span>
+
     </div>
+  </div>
+</div>
+    <div class="hex-container" id="button2">
+      <div class="hex side1"></div>
+      <div class="hex side2"></div>
+      <div class="hex side3"></div>
+      <div class="hex side2 inner"></div>
+      <div class="hex side3 inner"></div>
+      <div class="hex side1 inner">
+        <span>Tiles</span>
+      </div>
+    </div>
+    <div class="hex-container" id="button3">
+      <div class="hex side1"></div>
+      <div class="hex side2"></div>
+      <div class="hex side3"></div>
+      <div class="hex side2 inner"></div>
+      <div class="hex side3 inner"></div>
+      <div class="hex side1 inner">
+        <span>Map</span>
+      </div>
+    </div>
+    <script src="logic.js"></script>
+    <script src="display.js"></script>
   </body>
 </html>
