@@ -33,6 +33,13 @@ html, body {
     padding-bottom: 26vmin;
     margin: 3vmin;
     text-align: center;
+    transition: all 0.2s ease-in-out;
+}
+
+.hex-container:active {
+    width: 20vmin;
+    padding-bottom: 20vmin;
+    margin: 6vmin;
 }
 
 .hex {
