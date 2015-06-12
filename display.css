@@ -63,6 +63,8 @@ html, body {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
     font-weight: bold;
     font-size: 5vmin;
     display: block;
@@ -83,7 +85,11 @@ html, body {
 
 .hex.side2 {
     transform: rotate(60deg);
+    -ms-transform: rotate(60deg);
+    -webkit-transform: rotate(60deg);
 }
 .hex.side3 {
     transform: rotate(120deg);
+    -ms-transform: rotate(120deg);
+    -webkit-transform: rotate(120deg);
 }
