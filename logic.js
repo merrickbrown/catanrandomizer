@@ -279,6 +279,62 @@ function Setup(board, rules) {
         }
         return result;
     };
+
+    this.equalize = function(rolls) {
+        var resources = ["sheep", "wood", "wheat", "clay", "ore"];
+        for(var d = 2; d < 7; d++) {
+            // Setup resource balances 
+            var dresources = {
+                    lower : [[], [], [], [], []], 
+                    upper : [[], [], [], [], []]
+                }
+            dresources.diffs = function() {
+                        return dresources.lower.map(
+                            function(e, i) {
+                                return dresources.upper[i].length - e.length;
+                            }
+                        )
+                    };
+            dresources.maxdiff = function() {
+                    var mx = -Infinity,
+                        mxi;
+                    for (var diffi = 0; diffi < dresources.diffs().length; diffi++) {
+                        if (mx < dresources.diffs()[diffi]) { mx = dresources.diffs()[diffi]; mxi = diffi;}
+                    }
+                    return mxi;
+                };
+            dresources.mindiff = function() {
+                    var mn = Infinity,
+                        mni;
+                    for (var diffi = 0; diffi < dresources.diffs().length; diffi++) {
+                        if (mn > dresources.diffs()[diffi]) { mn = dresources.diffs()[diffi]; mni = diffi;}
+                    }
+                    return mni;
+                };
+            for (var resindex = 0; resindex < resources.length; resindex++) {
+                rolls.map(function(elem, index) {
+                    if (elem === d && rules.resources[index] === resources[resindex]) {
+                        dresources.lower[resindex].push(index);
+                    } else if (elem === (14 - d) && rules.resources[index] === resources[resindex]) {
+                        dresources.upper[resindex].push(index);
+                    }
+                });
+            }
+            // Equalize rolls
+            while (dresources.diffs()[dresources.maxdiff()] > 1 || dresources.diffs()[dresources.mindiff()] < -1) {
+                var swapi1 = dresources.mindiff(),
+                    swapi2 = dresources.maxdiff(),
+                    swapupper2 = dresources.upper[swapi2].pop(),
+                    swaplower1 = dresources.lower[swapi1].pop();
+                dresources.lower[swapi2].push(swaplower1);
+                dresources.upper[swapi1].push(swapupper2);
+                rolls[swapupper2] = d;
+                rolls[swaplower1] = 14 - d;
+                // console.log('Swapping a ' + d + ' and ' + (14 - d) + ' in hexes ' + swapupper2 + ' and ' + swaplower1);
+            }
+        }
+        return rolls;
+    };
 };
 
 function vertexFilter(filter, setup, rolls) {

@@ -33,25 +33,30 @@ html, body {
     padding-bottom: 26vmin;
     margin: 3vmin;
     text-align: center;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.1s ease-in;
 }
 
 .hex-container:active {
-    width: 20vmin;
-    padding-bottom: 20vmin;
-    margin: 6vmin;
+    width: 22vmin;
+    padding-bottom: 22vmin;
+    margin: 5vmin;
 }
+
 
 .hex {
     width: calc(100%);
     height: calc((100% + 20%) *0.57735026919);
-    background: black;
+    /*background: black;*/
     border: solid black 0;
     border-radius: 20%;
     position: absolute;
     left: 0;
     top: calc(100%/6);    
     margin: 0;
+ }
+
+ .hex.outer {
+    background: black;
  }
 
  .hex.inner {
@@ -65,7 +70,7 @@ html, body {
  }
 
 
-.hex-container span {
+span {
     font-family: sans-serif;
     position: relative;
     top: 50%;
@@ -77,26 +82,29 @@ html, body {
     display: block;
  }
 
- #button1 .hex.inner {
+ #button1 .inner {
      background: #7FDF39;
  }
 
+#button1:hover .inner {
+     background: #8FEF49;
+}
 
-#button2 .hex.inner {
+#button2 .inner {
      background: #929292;
- }
+}
 
- #button3 .hex.inner {
+ #button3 .inner {
      background: #e9cc2e;
  }
 
 .hex.side2 {
-    transform: rotate(60deg);
-    -ms-transform: rotate(60deg);
-    -webkit-transform: rotate(60deg);
+    transform: rotateZ(60deg);
+    -ms-transform: rotateZ(60deg);
+    -webkit-transform: rotateZ(60deg);
 }
 .hex.side3 {
-    transform: rotate(120deg);
-    -ms-transform: rotate(120deg);
-    -webkit-transform: rotate(120deg);
+    transform: rotateZ(120deg);
+    -ms-transform: rotateZ(120deg);
+    -webkit-transform: rotateZ(120deg);
 }
